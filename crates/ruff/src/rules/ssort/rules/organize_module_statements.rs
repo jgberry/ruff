@@ -2,11 +2,12 @@ use ruff_diagnostics::{AutofixKind, Violation};
 use ruff_macros::{derive_message_formats, violation};
 
 /// ## What it does
-/// Groups and sorts a module's statements based on the order in which they are referenced.
+/// Groups and sorts a module's statements based on the order in which they are
+/// referenced.
 ///
 /// ## Why is this bad?
-/// Consistency is good. Use a common convention for statement ordering to make your code more
-/// readable and idiomatic.
+/// Consistency is good. Use a common convention for statement ordering to make
+/// your code more readable and idiomatic.
 ///
 /// ## Example
 /// ```python
@@ -45,4 +46,8 @@ impl Violation for UnsortedModuleStatements {
     fn autofix_title(&self) -> Option<String> {
         Some("Organize module statements".to_string())
     }
+}
+
+pub(crate) fn organize_module_statements() {
+    println!("Organize module statements!");
 }

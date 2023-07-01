@@ -44,7 +44,7 @@ use crate::rules::{
     flake8_print, flake8_pyi, flake8_pytest_style, flake8_raise, flake8_return, flake8_self,
     flake8_simplify, flake8_slots, flake8_tidy_imports, flake8_type_checking,
     flake8_unused_arguments, flake8_use_pathlib, flynt, mccabe, numpy, pandas_vet, pep8_naming,
-    perflint, pycodestyle, pydocstyle, pyflakes, pygrep_hooks, pylint, pyupgrade, ruff,
+    perflint, pycodestyle, pydocstyle, pyflakes, pygrep_hooks, pylint, pyupgrade, ruff, ssort,
     tryceratops,
 };
 use crate::settings::types::PythonVersion;
@@ -4635,6 +4635,7 @@ impl<'a> Checker<'a> {
             Rule::UndefinedExport,
             Rule::UndefinedLocalWithImportStarUsage,
             Rule::UndefinedLocalWithImportStarUsage,
+            Rule::UnsortedModuleStatements,
             Rule::UnusedImport,
         ]) {
             return;
@@ -4739,6 +4740,11 @@ impl<'a> Checker<'a> {
                             }
                         }
                     }
+                }
+
+                // SS001
+                if self.enabled(Rule::UnsortedModuleStatements) {
+                    ssort::rules::organize_module_statements();
                 }
             }
 
