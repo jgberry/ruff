@@ -800,6 +800,9 @@ pub fn code_to_rule(linter: Linter, code: &str) -> Option<(RuleGroup, Rule)> {
         (Flake8Slots, "001") => (RuleGroup::Unspecified, rules::flake8_slots::rules::NoSlotsInTupleSubclass),
         (Flake8Slots, "002") => (RuleGroup::Unspecified, rules::flake8_slots::rules::NoSlotsInNamedtupleSubclass),
 
+        // ssort
+        (Ssort, "001") => (RuleGroup::Unspecified, rules::ssort::rules::UnsortedModuleStatements),
+
         _ => return None,
     })
 }

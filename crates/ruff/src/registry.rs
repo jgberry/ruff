@@ -197,6 +197,9 @@ pub enum Linter {
     /// Ruff-specific rules
     #[prefix = "RUF"]
     Ruff,
+    /// [Ssort](https://pypi.org/project/ssort)
+    #[prefix = "SS"]
+    Ssort,
 }
 
 pub trait RuleNamespace: Sized {
