@@ -4741,11 +4741,6 @@ impl<'a> Checker<'a> {
                         }
                     }
                 }
-
-                // SS001
-                if self.enabled(Rule::UnsortedModuleStatements) {
-                    ssort::rules::organize_module_statements();
-                }
             }
 
             // PLW0602
@@ -4945,6 +4940,9 @@ impl<'a> Checker<'a> {
                         &mut diagnostics,
                     );
                 }
+            }
+            if self.enabled(Rule::UnsortedModuleStatements) {
+                ssort::rules::organize_statements(self, scope, &mut diagnostics);
             }
         }
         self.diagnostics.extend(diagnostics);
